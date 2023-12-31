@@ -1,0 +1,12 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "airflow:CreateWebLoginToken",
+            "Resource": [
+                "arn:aws:airflow:us-east-1:353818015911:role/testeRBAC/Public"
+            ]
+        }
+    ]
+}
