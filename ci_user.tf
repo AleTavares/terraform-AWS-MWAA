@@ -1,43 +1,50 @@
-data "aws_iam_policy_document" "ci_user_policy" {
-  statement {
-    effect = "Allow"
-    actions = [
-      "s3:GetObject*",
-      "s3:GetBucket*",
-      "s3:List*",
-      "s3:PutObject",
-      "s3:DeleteObject",
-      "s3:GetEncryptionConfiguration",
-    ]
-    resources = [
-      "arn:aws:s3:::${aws_s3_bucket.bucket.bucket_domain_name}",
-      "arn:aws:s3:::${aws_s3_bucket.bucket.bucket_domain_name}/*"
-    ]
-  }
-}
-resource "aws_iam_user" "app_user" {
-  name = "appusr_airflow_ci"
-  path = "/"
+resource "aws_iam_user" "mwaaUser" {
+  name          = "tavares"
+  path          = "/"
+  force_destroy = true
   tags = {
-    Name = "PrivateSubnet"
+    Name = "userModelo"
   }
 }
 
-resource "aws_iam_access_key" "access_key" {
-  user = aws_iam_user.app_user.name
+resource "aws_iam_user_login_profile" "mwaa_user_policy" {
+  user                    = aws_iam_user.mwaaUser.name
+  password_reset_required = true
+  pgp_key                 = "keybase:some_person_that_exists"
 }
+
+# resource "aws_iam_access_key" "access_key" {
+#   user = aws_iam_user.app_user.name
+# }
 
 resource "aws_iam_user_policy" "user_policy" {
   name   = "airflow_ci_policy"
-  user   = aws_iam_user.app_user.name
+  user   = aws_iam_user.mwaaUser.name
   policy = data.aws_iam_policy_document.ci_user_policy.json
 }
 
-output "ci_access_key" {
-  value = aws_iam_access_key.access_key.id
+resource "aws_iam_user_policy" "MWAAAirflowCliAccess" {
+  name   = "AmazonMWAAAirflowCliAccess"
+  user   = aws_iam_user.mwaaUser.name
+  policy = data.aws_iam_policy_document.AmazonMWAAAirflowCliAccess.json
 }
 
-output "ci_secret_key" {
-  value     = aws_iam_access_key.access_key.secret
-  sensitive = true
+resource "aws_iam_user_policy" "MWAAFullConsoleAccess" {
+  name   = "AmazonMWAAFullConsoleAccess"
+  user   = aws_iam_user.mwaaUser.name
+  policy = data.aws_iam_policy_document.AmazonMWAAFullConsoleAccess.json
 }
+
+resource "aws_iam_user_policy" "MWAAWebServerAccess" {
+  name   = "AmazonMWAAWebServerAccess"
+  user   = aws_iam_user.mwaaUser.name
+  policy = data.aws_iam_policy_document.AmazonMWAAWebServerAccess.json
+}
+# output "ci_access_key" {
+#   value = aws_iam_access_key.access_key.id
+# }
+
+# output "ci_secret_key" {
+#   value     = aws_iam_access_key.access_key.secret
+#   sensitive = true
+# }

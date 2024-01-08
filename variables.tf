@@ -10,6 +10,12 @@ variable "account_id" {
   default     = "353818015911"
 }
 
+variable "bucket_name_glue" {
+  description = "Nome do Bucket de Scripts Glue"
+  type        = string
+  default     = "glue-jobs"
+}
+
 variable "bucket_name" {
   description = "Nome do Bucket de Configuração do MWAA"
   type        = string

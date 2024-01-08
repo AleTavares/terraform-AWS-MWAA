@@ -4,7 +4,7 @@
 - **Permissions Reference for Amazon Managed Workflows for Apache Airflow**
     - https://aws.permissions.cloud/iam/airflow
 
-- **Access Contro**
+- **Access Control**
     - https://airflow.apache.org/docs/apache-airflow/stable/security/access-control.html
 
 - **Building the networking infrastructure for an MWAA environment**
@@ -36,4 +36,5 @@
 
 - **Tutorial: Restricting an Amazon MWAA user's access to a subset of DAGs**
     - https://docs.aws.amazon.com/mwaa/latest/userguide/limit-access-to-dags.html#limit-access-to-dags-prerequisites
-
+- **Simplify AWS Glue job orchestration and monitoring with Amazon MWAA**
+    - https://aws.amazon.com/pt/blogs/big-data/simplify-aws-glue-job-orchestration-and-monitoring-with-amazon-mwaa/
