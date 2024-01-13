@@ -12,7 +12,8 @@ Ambiente com várias squads trabalhando em projetos distintos e tendo que orques
 - Ambiente que não precise o minimo de uma equipe de Infra estrutura  
 
 ## Arquitetura sugerida
-<img src="/imagens/MWAA.jpg">
+<img src="./imagens/MWAA.jpg">
+
 
 Avaliando a quantidade de <a id="dag">DAG's*</a> produzidas por todas as esquads constatamos que não necessitariamos de um ambiente de <a id="MWAA">MWAA</a> para cada squad.
 
