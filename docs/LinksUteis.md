@@ -41,3 +41,14 @@
 
 - **Usando um DAG para escrever métricas personalizadas no CloudWatch**
     - https://docs.aws.amazon.com/mwaa/latest/userguide/samples-custom-metrics.html
+
+**Documentação do MWAA**
+- https://airflow.apache.org/docs/apache-airflow/stable/index.html
+- https://docs.aws.amazon.com/pt_br/mwaa/latest/userguide/what-is-mwaa.html
+
+**Documentação do Apache AirFlow**
+- https://docs.aws.amazon.com/pt_br/mwaa/latest/userguide/what-is-mwaa.html
+
+**Boas praticas de desenvolvimento**
+- https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html
+- https://docs.aws.amazon.com/pt_br/mwaa/latest/userguide/best-practices.html
