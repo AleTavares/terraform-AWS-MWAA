@@ -1,10 +1,35 @@
-# Criar um ambiente AWS MWAA (Airflow) com Terraform
-Nos ultimos dias precisei subir um ambiente de MWAA para alguns testes e me deparei com uma dificuldade em encontrar um código derraforme simples so pra subir um ambiente de teste foi então que decidi construir este código.
+# Utilizando o Terraform para Subir uma instância de AWS MWAA
 
-Estou montando um ambiente MWAA com isolamento de DAG, ou seja, que dada usuario ou grupo so vejam as DAG's que tem acesso.
+
+## Cenário
+Ambiente com várias squads trabalhando em projetos distintos e tendo que orquestrar seus pipelines de dados de forma isolada, ou seja cada squads so pode ver e gerenciar o seu grupo de Pipelines.
+
+## Premissas
+- Cada Squad precisa ver apenas os seus Pipeline de dados
+- Administradores devem conseguir ver todos os Pipes Lines de dados
+- As métricas do ambiente precisam ser puplicadas em uma ferramenta de LOG
+- Inicio, Fim e Falhas precisam ser puplicadas em uma ferramenta de LOG
+- Ambiente que não precise o minimo de uma equipe de Infra estrutura  
+
+## Arquitetura sugerida
+<img src="/imagens/MWAA.jpg">
+
+Avaliando a quantidade de <a id="dag">DAG's*</a> produzidas por todas as esquads constatamos que não necessitariamos de um ambiente de <a id="MWAA">MWAA</a> para cada squad.
+
+, porém dada a quantidade de jobs(DAG's) produzidas não justifica a criação de 
+
+>[*DAG*](#dag) é uma abreviação para “Directed Acyclic Graphs” - Grafos Acíclicos Dirigidos em tradução livre. Vamos entender o que significa cada uma dessas palavras?
+>- *"Grafo"*: é uma ferramenta matemática com nós e arestas responsáveis por conectar esses nós.
+>- *"Directed"*: quer nos dizer que o fluxo de trabalho se dá apenas em uma direção.
+>- *"Acyclic"*: significa que a execução não entrará em um laço de repetição, então eventualmente acabaremos em um nó final que não estará conectado com o nó inicial.
+
+Nos ultimos dias precisei subir um ambiente de MWAA para alguns testes e me deparei com uma dificuldade em encontrar um código terraforme simples so pra subir um ambiente de teste foi então que decidi construir este código.
+
+Estou montando um ambiente MWAA com isolamento de DAG, ou seja, que dado usuario ou grupo so vejam as DAG's que tem acesso.
 
 Pretendo ir subindo os códigos aqui conforme for evoluindo.
 
+[MWAA]
 # O que é o Amazon Managed Workflows for Apache Airflow?
 O Amazon Managed Workflows for Apache Airflow é um serviço de orquestração gerenciado para o Apache Airflow que você pode usar para configurar e operar data pipelines na nuvem em escala. O Apache Airflow é uma ferramenta de código aberto usada para criar, agendar e monitorar programaticamente sequências de processos e tarefas conhecidas como fluxos de trabalho. Com o Amazon MWAA, você pode usar o Apache Airflow e o Python para criar fluxos de trabalho sem precisar gerenciar a infraestrutura subjacente para escalabilidade, disponibilidade e segurança. O Amazon MWAA escala automaticamente sua capacidade de execução de fluxo de trabalho para atender às suas necessidades. O Amazon MWAA se integra aos serviços AWS de segurança para ajudar a fornecer acesso rápido e seguro aos seus dados.
 
@@ -40,3 +65,4 @@ Como acontece com qualquer ferramenta, entender suas forças e limitações é a
 - https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html
 - https://docs.aws.amazon.com/pt_br/mwaa/latest/userguide/best-practices.html
 
+s

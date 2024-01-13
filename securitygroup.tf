@@ -23,17 +23,6 @@ resource "aws_security_group" "mwaa" {
 
 }
 
-# resource "aws_security_group_rule" "mwaa_sg_inbound" {
-#   count                    = 1
-#   type                     = "ingress"
-#   from_port                = 0
-#   to_port                  = 0
-#   protocol                 = "all"
-#   source_security_group_id = aws_security_group.mwaa.id
-#   security_group_id        = aws_security_group.mwaa.id
-#   description              = "Amazon MWAA inbound access"
-# }
-
 resource "aws_security_group_rule" "mwaa_sg_inbound_vpn" {
   type              = "ingress"
   from_port         = 443
@@ -43,13 +32,3 @@ resource "aws_security_group_rule" "mwaa_sg_inbound_vpn" {
   security_group_id = aws_security_group.mwaa.id
   description       = "VPN Access for Airflow UI"
 }
-
-# resource "aws_security_group_rule" "mwaa_sg_outbound" {
-#   type              = "egress"
-#   from_port         = 0
-#   to_port           = 0
-#   protocol          = "all"
-#   cidr_blocks       = ["0.0.0.0/0"]
-#   security_group_id = aws_security_group.mwaa.id
-#   description       = "Amazon MWAA outbound access"
-# }

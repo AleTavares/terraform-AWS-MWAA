@@ -31,6 +31,7 @@ data "aws_iam_policy_document" "mwaa_assume" {
     }
   }
 }
+
 data "aws_iam_policy_document" "execution_role_policy" {
   version = "2012-10-17"
   statement {
@@ -164,11 +165,12 @@ data "aws_iam_policy_document" "glue_role_policy" {
   statement {
     effect = "Allow"
     resources = [
-      "*"
-    ]
+        "arn:aws:s3:::${var.account_id}-${var.bucket_name_glue}/*",
+        "arn:aws:s3:::${var.account_id}-${var.bucket_name_glue}"    ]
     actions = [
-      "s3:*"
-    ]
+      "s3:Get*",
+      "s3:List*",
+      "s3:*Object*"    ]
   }
 }
 

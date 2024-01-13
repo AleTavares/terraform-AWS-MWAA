@@ -1,32 +1,26 @@
 variable "region" {
-  description = "Região onde os recursos serão criados na Azure"
+  description = "Região onde os recursos serão criados na AWS"
   type        = string
-  default     = "us-east-1"
 }
 
 variable "account_id" {
   description = "ID da conta na AWS"
   type        = string
-  default     = "353818015911"
 }
 
 variable "bucket_name_glue" {
   description = "Nome do Bucket de Scripts Glue"
   type        = string
-  default     = "glue-jobs"
 }
 
 variable "bucket_name" {
   description = "Nome do Bucket de Configuração do MWAA"
   type        = string
-  default     = "mwaa"
 }
 
 variable "name" {
-  description = "Nome do recurso"
+  description = "Nome do recurso do MWAA"
   type        = string
-  default     = "teste-airflow"
-
 }
 
 variable "kms_key_arn" {

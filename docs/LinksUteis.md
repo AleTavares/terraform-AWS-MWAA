@@ -38,3 +38,6 @@
     - https://docs.aws.amazon.com/mwaa/latest/userguide/limit-access-to-dags.html#limit-access-to-dags-prerequisites
 - **Simplify AWS Glue job orchestration and monitoring with Amazon MWAA**
     - https://aws.amazon.com/pt/blogs/big-data/simplify-aws-glue-job-orchestration-and-monitoring-with-amazon-mwaa/
+
+- **Usando um DAG para escrever métricas personalizadas no CloudWatch**
+    - https://docs.aws.amazon.com/mwaa/latest/userguide/samples-custom-metrics.html
