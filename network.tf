@@ -1,8 +1,10 @@
 data "aws_availability_zones" "available" {
   state = "available"
 }
-# VPC resources: Isso criará 1 VPC com 4 sub-redes, 1 gateway de Internet e 4 tabelas de rota. 
 
+#---------------------------------------------------------------------
+# ##### Infra estrutura de Network nessessária para Rodar o MWAA #####
+#---------------------------------------------------------------------
 resource "aws_vpc" "vpc" {
   cidr_block           = var.cidr_block
   enable_dns_support   = true
@@ -67,9 +69,6 @@ resource "aws_route_table_association" "public" {
   subnet_id      = aws_subnet.public[count.index].id
   route_table_id = aws_route_table.public.id
 }
-
-
-# NAT resources: Isso criará 2 gateways NAT em 2 sub-redes públicas para 2 sub-redes privadas diferentes.
 
 resource "aws_eip" "nat" {
   count  = length(var.public_subnet_cidr_blocks)

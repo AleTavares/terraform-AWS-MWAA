@@ -1,3 +1,6 @@
+#----------------------------------------
+# ############## Role MWAA ##############
+#----------------------------------------
 data "aws_iam_policy_document" "mwaa_assume" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -149,6 +152,9 @@ data "aws_iam_policy_document" "execution_role_policy" {
   }
 }
 
+#----------------------------------------------------------------------
+# ############## Policy de liberação de Execução do Glue ##############
+#----------------------------------------------------------------------
 data "aws_iam_policy_document" "glue_mwaa" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -174,6 +180,9 @@ data "aws_iam_policy_document" "glue_role_policy" {
   }
 }
 
+#--------------------------------------------------
+# ############## Policy Usuario MWAA ##############
+#--------------------------------------------------
 data "aws_iam_policy_document" "ci_user_policy" {
   statement {
     effect = "Allow"

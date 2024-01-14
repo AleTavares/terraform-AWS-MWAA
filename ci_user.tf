@@ -13,10 +13,6 @@ resource "aws_iam_user_login_profile" "mwaa_user_policy" {
   pgp_key                 = "keybase:some_person_that_exists"
 }
 
-# resource "aws_iam_access_key" "access_key" {
-#   user = aws_iam_user.app_user.name
-# }
-
 resource "aws_iam_user_policy" "user_policy" {
   name   = "airflow_ci_policy"
   user   = aws_iam_user.mwaaUser.name
@@ -40,11 +36,3 @@ resource "aws_iam_user_policy" "MWAAWebServerAccess" {
   user   = aws_iam_user.mwaaUser.name
   policy = data.aws_iam_policy_document.AmazonMWAAWebServerAccess.json
 }
-# output "ci_access_key" {
-#   value = aws_iam_access_key.access_key.id
-# }
-
-# output "ci_secret_key" {
-#   value     = aws_iam_access_key.access_key.secret
-#   sensitive = true
-# }
