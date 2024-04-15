@@ -50,3 +50,10 @@ terraform apply plan.out
 ```
 
 Feito estes passos ele vai criar os recursos na AWS e gerar o endpoint da IDE do AirFlow
+
+> [!CAUTION]
+>Não se esqueça de destruir o recurso após utilizar para que não seja cobrado desnecessariamente
+> ```bash
+> terraform destroy
+> ```
+> confirme a destruição dos recursos
