@@ -1,4 +1,4 @@
-# Bucket MWAA
+# Cria o Bucket de Armazenamento dos Artefatos do MWAA
 resource "aws_s3_bucket" "bucket" {
   bucket = "${var.account_id}-${var.bucket_name}"
 }
@@ -18,17 +18,4 @@ resource "aws_s3_object" "dag" {
   key        = "dags/${each.value}"
   source     = "dags/${each.value}"
   etag       = filemd5("dags/${each.value}")
-}
-
-# Cria um Bucket para armazernar os scripts do Glue
-resource "aws_s3_bucket" "bucket_Glue" {
-  bucket = "${var.account_id}-${var.bucket_name_glue}"
-}
-## Copia os scripts de Glue da Pasta Scripts deste repositorio para a pasta de Scripts do Bucket criado pro Glue
-resource "aws_s3_object" "scripts_glue" {
-  for_each = fileset("scripts/", "**")
-  bucket   = aws_s3_bucket.bucket_Glue.id
-  key      = "scripts/${each.value}"
-  source   = "scripts/${each.value}"
-  etag     = filemd5("scripts/${each.value}")
 }

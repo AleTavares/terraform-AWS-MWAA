@@ -8,11 +8,6 @@ variable "account_id" {
   type        = string
 }
 
-variable "bucket_name_glue" {
-  description = "Nome do Bucket de Scripts Glue"
-  type        = string
-}
-
 variable "bucket_name" {
   description = "Nome do Bucket de Configuração do MWAA"
   type        = string
