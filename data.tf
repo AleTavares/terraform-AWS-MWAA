@@ -40,7 +40,7 @@ data "aws_iam_policy_document" "execution_role_policy" {
   statement {
     effect = "Allow"
     resources = [
-      "arn:aws:airflow:${var.region}:${var.account_id}:environment/${var.name}",
+      "arn:aws:airflow:${var.region}:${local.account_id}:environment/${var.name}",
     ]
     actions = [
       "airflow:PublishMetrics"
@@ -100,7 +100,7 @@ data "aws_iam_policy_document" "execution_role_policy" {
       "logs:GetQueryResults"
     ]
     resources = [
-      "arn:aws:logs:${var.region}:${var.account_id}:log-group:airflow-${var.name}-*",
+      "arn:aws:logs:${var.region}:${local.account_id}:log-group:airflow-${var.name}-*",
     ]
   }
   statement {
@@ -143,7 +143,7 @@ data "aws_iam_policy_document" "execution_role_policy" {
       "kms:GenerateDataKey*",
       "kms:Encrypt"
     ]
-    not_resources = ["arn:aws:kms:*:${var.account_id}:key/*"]
+    not_resources = ["arn:aws:kms:*:${local.account_id}:key/*"]
     condition {
       test     = "StringLike"
       values   = var.kms_key_arn != null ? ["s3.${var.region}.amazonaws.com"] : ["sqs.${var.region}.amazonaws.com"]

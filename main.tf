@@ -11,7 +11,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "353818015911-remotestate"
+    bucket = "${local.account_id}-remotestate"
     key    = "prj-mwaa/terraform.tfstate"
     region = "us-east-1"
   }

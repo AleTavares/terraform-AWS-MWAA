@@ -3,11 +3,6 @@ variable "region" {
   type        = string
 }
 
-variable "account_id" {
-  description = "ID da conta na AWS"
-  type        = string
-}
-
 variable "bucket_name" {
   description = "Nome do Bucket de Configuração do MWAA"
   type        = string

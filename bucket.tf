@@ -1,6 +1,6 @@
 # Cria o Bucket de Armazenamento dos Artefatos do MWAA
 resource "aws_s3_bucket" "bucket" {
-  bucket = "${var.account_id}-${var.bucket_name}"
+  bucket = "${local.account_id}-${var.bucket_name}"
 }
 
 resource "aws_s3_bucket_versioning" "versioning" {
